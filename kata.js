@@ -158,5 +158,55 @@ function seatsInTheater(nCols, nRows, col, row) {
 // console.log(seatsInTheater(16, 11, 5, 3));
 
 /////////////////////////////////////////////////////////////////
-////// 
+////// Split Strings - 6kyu
 /////////////////////////////////////////////////////////////////
+
+// given string, split it into pairs, if no pair return "a_"
+
+function solution(str) {
+  // if array lenght is odd
+  // store last char_ into lastChar var
+  let split = str.split("");
+  if (split.length % 2 != 0) {
+    var test = true;
+    var lastChar = split.splice(split.length - 1) + "_";
+  }
+
+  // iterate thru and push pairs w/ i and i+1
+  let pairs = [];
+  for (let i = 0; i < split.length; i++) {
+    pairs.push(split[i] + split[i + 1]);
+    i++;
+  }
+
+  // if lastChar exist, push lastChar
+  if (test) {
+    pairs.push(lastChar);
+  }
+
+  return pairs;
+}
+
+// console.log(solution("hellozffsg"));
+
+//______________________________
+// Refactoring
+
+function solution2(str) {
+  let result = new Array();
+
+  if (str.length % 2 !== 0) {
+    str = str + "_";
+  }
+
+  for (let i = 0; i < str.length; i++) {
+    result.push(str[i] + str[i + 1]);
+    i++;
+  }
+
+  return result;
+}
+
+console.log(solution2("hellozkfjfO"))
+
+
